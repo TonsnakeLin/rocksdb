@@ -663,10 +663,6 @@ class Env : public Customizable {
   // could be a fully implemented one, or a wrapper class around the Env
   const std::shared_ptr<SystemClock>& GetSystemClock() const;
 
-  // If the current env has key manager and the encryption method is not plaintext,
-  // it returns true.
-  virtual bool IsEncryptedEnv() const { return false; }  
-
   // If you're adding methods here, remember to add them to EnvWrapper too.
 
  protected:
@@ -1634,9 +1630,6 @@ class EnvWrapper : public Env {
     target_.env->SanitizeEnvOptions(env_opts);
   }
   Status PrepareOptions(const ConfigOptions& options) override;
-  virtual bool IsEncryptedEnv() const override { 
-    return target_.env->IsEncryptedEnv(); 
-  }  
 #ifndef ROCKSDB_LITE
   std::string SerializeOptions(const ConfigOptions& config_options,
                                const std::string& header) const override;

@@ -70,14 +70,6 @@ class InMemoryKeyManager final : public KeyManager {
     return Status::OK();
   }
 
-  virtual bool IsEncryptedEnv() override {
-    if method_ == EncryptionMethod::kUnknown || 
-      method_ == EncryptionMethod::kPlaintext {
-      return false;
-    }
-    return true;
-  } 
-
  private:
   mutable port::Mutex mu_;
   Random rnd_;
