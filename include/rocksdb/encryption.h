@@ -58,6 +58,7 @@ class KeyManager {
   virtual Status DeleteFile(const std::string& fname) = 0;
   virtual Status LinkFile(const std::string& src_fname,
                           const std::string& dst_fname) = 0;
+  virtual bool IsEncryptedEnv() = 0;                            
 };
 
 // An Env with underlying files being encrypted. It holds a reference to an
@@ -98,6 +99,8 @@ class KeyManagedEncryptedEnv : public EnvWrapper {
                     const std::string& dst_fname) override;
 
   Status DeleteDir(const std::string& dname) override;
+
+  virtual bool IsEncryptedEnv() const override;
 
  private:
   const std::shared_ptr<KeyManager> key_manager_;
