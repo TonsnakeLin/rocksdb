@@ -546,6 +546,10 @@ Status KeyManagedEncryptedEnv::DeleteDir(const std::string& dname) {
   return key_manager_->DeleteFile(dname);
 }
 
+bool KeyManagedEncryptedEnv::IsEncryptedEnv() const {
+  return key_manager_->IsEncryptedEnv();
+}
+
 Env* NewKeyManagedEncryptedEnv(Env* base_env,
                                std::shared_ptr<KeyManager>& key_manager) {
   std::shared_ptr<AESEncryptionProvider> provider(
