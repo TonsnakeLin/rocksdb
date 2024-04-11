@@ -564,9 +564,9 @@ ColumnFamilyData::ColumnFamilyData(
   Ref();
   ROCKS_LOG_INFO(ioptions_.logger,
                      "woooow! It's going to assert 0");
-  char *p = NULL;
-  *p = 's';
-  assert(0);
+  // char *p = NULL;
+  // *p = 's';
+  assert(0!=0);
 
   // Convert user defined table properties collector factories to internal ones.
   GetIntTblPropCollectorFactory(ioptions_, &int_tbl_prop_collector_factories_);

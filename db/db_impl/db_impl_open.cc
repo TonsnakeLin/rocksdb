@@ -308,9 +308,9 @@ Status DBImpl::NewDB(std::vector<std::string>* new_filenames) {
   new_db.SetNextFile(2);
   new_db.SetLastSequence(0);
   ROCKS_LOG_INFO(immutable_db_options_.info_log, "woooow! It's going to assert 0");
-  char *p = NULL;
-  *p = 's';  
-  assert(0);
+  // char *p = NULL;
+  // *p = 's';  
+  assert(0!=0);
 
   ROCKS_LOG_INFO(immutable_db_options_.info_log, "Creating manifest 1 \n");
   const std::string manifest = DescriptorFileName(dbname_, 1);
@@ -1632,9 +1632,9 @@ Status DBImpl::Open(const DBOptions& db_options, const std::string& dbname,
   s = impl->env_->CreateDirIfMissing(impl->immutable_db_options_.GetWalDir());
   ROCKS_LOG_INFO(impl->immutable_db_options_.info_log,
                    "woooow! It's going to assert 0");  
-  char *p = NULL;
-  *p = 's';                                       
-  assert(0);
+  // char *p = NULL;
+  // *p = 's';                                       
+  assert(0!=0);
   if (s.ok()) {
     std::vector<std::string> paths;
     for (auto& db_path : impl->immutable_db_options_.db_paths) {
